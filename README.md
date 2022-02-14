@@ -1,3 +1,3 @@
 # ASD
-this is for college bussiness
-https://github.com/Pancakra
+this is for college bussiness\n
+ter
