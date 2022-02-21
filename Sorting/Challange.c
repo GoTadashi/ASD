@@ -22,3 +22,7 @@ void exchange_sort()
  	}
 }
 
+void main()
+{
+	
+}
