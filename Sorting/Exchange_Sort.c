@@ -4,6 +4,7 @@ void main()
 {
 	int data[10], a;
 	int size = sizeof(data) / sizeof(data[0]);
+	printf("Exchange Sorting\n");
 	printf("masukkan 10 angka acak untuk diurutkan : ");
 	for(a=0; a<=9; a++)
 	scanf("%d", &data[a]);
