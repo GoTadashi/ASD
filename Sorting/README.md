@@ -7,5 +7,5 @@
     <img width="350" alt="image" src="https://user-images.githubusercontent.com/98724538/156935567-6931005c-c091-4bee-a2fa-a0857717f541.png">
   - 
 + [Bubble Method](https://github.com/GoTadashi/ASD/blob/main/Sorting/Bubble_Sort.c)
-+ [Selection Method]()
++ [Selection Method](https://github.com/GoTadashi/ASD/blob/main/Sorting/Selection_Sort.c)
 + [Insertion Method]()
