@@ -8,4 +8,4 @@
   - 
 + [Bubble Method](https://github.com/GoTadashi/ASD/blob/main/Sorting/Bubble_Sort.c)
 + [Selection Method](https://github.com/GoTadashi/ASD/blob/main/Sorting/Selection_Sort.c)
-+ [Insertion Method]()
++ [Insertion Method](https://github.com/GoTadashi/ASD/blob/main/Sorting/Insertion_Sort.c)
