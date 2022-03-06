@@ -1,28 +1,53 @@
 #include <stdio.h>
 
-void bubble_sort()
+void bubble_sort(int array[], int size)
 {
-	for(int i=1;i<n;i++)
+	for(int i=1;i<size-1;i++)
  	{
- 		for(int j=n-1;j>=i;j--)
+ 		for(int j=size-1;j>=i;j--)
  		{
- 			if(data[j]<data[j-1]) tukar(j,j-1);
+ 			if(array[j]<array[j-1])
+			{
+				int sementara = array[j];
+				array[j] = array[j-1];
+				array[j-1] = sementara;
+			}
  		}
  	}
+ 	for (int i = 0; i < size; ++i) 
+	{
+    	printf("%d  ", array[i]);
+  	}
+  	printf("\n\n");
 }
 
-void exchange_sort()
+void exchange_sort(int data[], int size)
 {
-	for (int i=0;i<n-1;i++)
+	for (int i=0;i<size-1;i++)
  	{
- 		for (int j=(i+1);j<n;j++)
+ 		for (int j=(i+1);j<size;j++)
  		{
- 			if (data[i]<data[j]) tukar(i,j);
+ 			if (data[i]>data[j])
+ 			{
+ 				int sementara = data[i];
+				data[i] = data[j];
+				data[j] = sementara;
+ 			}
  		}
  	}
+ 	for (int i = 0; i < size; ++i) 
+	{
+    	printf("%d  ", data[i]);
+  	}
+  	printf("\n\n");
 }
 
 void main()
 {
-	
+	int data[]={23,65,30,8,33,24,76,7};
+	int size = sizeof(data) / sizeof(data[0]);
+	printf("Bubble Sorting\n");
+	bubble_sort(data, size);
+	printf("Exchange Sorting\n");
+	exchange_sort(data, size);	
 }
