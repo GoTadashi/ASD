@@ -1,151 +1,144 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-struct node
-{
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
 	int data;
 	struct node* next;
 };
-
+ 
 struct node *head;
 
-void brain()
-{
-	//untuk isi node awal
-	struct node *pointer;
+void awal(){
+	struct node *ptr;
 	int item;
-	pointer = (struct node *) malloc(sizeof(struct node *));
-	if(pointer == NULL)
-	{
-		printf("\n OVERFLOW");
+	ptr = (struct node *) malloc(sizeof(struct node *));
+	if(ptr == NULL){
+		printf("\n Overflow");
 	}
-	else
-	{
-		printf(" Masukkan data : ");
+	else {
+		printf("masukkan data : \n");
 		scanf("%d", &item);
-		pointer->data = item;
-		pointer->next = head;
-		head = pointer;
-		printf("\n Data berhasil disimpan di NODE awal!\n");
+		ptr->data = item;
+		ptr->next = head;
+		head = ptr;
+		printf("data berhasil tersimpan di NODE awal!\n");
 	}
 }
 
-void bott()
-{
-	//untuk isi node akhir
-	struct node *pointer, *temp;
+void akhir(){
+	struct node *ptr, *temp;
 	int item;
-	pointer = (struct node *) malloc(sizeof(struct node *));
-	if(pointer == NULL)
+	ptr = (struct node *) malloc(sizeof(struct node *));
+	if(ptr == NULL)
 	{
-		printf("\n OVERFLOW");
+		printf("\n Overflow");
 	}
-	else
-	{
-		printf(" Masukkan data : ");
+	else {
+		printf("masukkan data : ");
 		scanf("%d", &item);
-		pointer->data = item;
-		if(head == NULL)
-		{
-			pointer->next = NULL;
-			head = pointer;
-			printf("\n Data berhasil disimpan di NODE akhir!\n");
+		ptr->data = item;
+		if(head == NULL){
+			ptr->next = NULL;
+			head = ptr;
+			printf("data berhasil tersimpan di NODE awal!\n");
 		}
-		else
-		{
+		else{
 			temp = head;
-			while(temp -> next != NULL)
-			{
+			while(temp -> next != NULL){
 				temp = temp->next;
 			}
-			temp->next = pointer;
-			pointer->next = NULL;
-			printf("\n Data berhasil disimpan di NODE akhir!\n");
+			temp->next = ptr;
+			ptr->next = NULL;
+			printf("Data berhasil disimpan di NODE akhir!\n");
 		}
 	}
 }
 
-void mid()
-{
-	//untuk isi node sisipan
-	int i, loc, item;
-	struct node *pointer, *temp;
-	pointer = (struct node *) malloc(sizeof(struct node *));
-	if(pointer == NULL)
-	{
-		printf("\n OVERFLOW");
+void sembarang(){
+    int i,loc,item;
+    struct node *ptr, *temp;
+    ptr = (struct node *)malloc(sizeof(struct node));
+    if (ptr == NULL)
+    {
+        printf("\n overflow");
+    }
+    else
+    {
+        printf("masukkan data :");
+        scanf("%d", &item);
+        ptr->data = item;
+        printf("mau simpan di lokasi mana?");
+        scanf("%d", &loc);
+        temp = head;
+        for(i=0;i<loc;i++)
+        {
+            temp = temp->next;
+            if(temp == NULL){
+                printf("tidak dapat disimpan\n");
+                return;
+            }
+        }
+    }
+    ptr->next = temp->next;
+    temp->next = ptr;
+    printf("\n NODE berhasil disimpan!\n");
+}
+
+void lihat(){
+	struct node *ptr;
+	ptr = head;
+	if(ptr == NULL){
+		printf("tidak ada data!!!\n");
 	}
-	else
-	{
-		printf(" Masukkan data : ");
-		scanf("%d", &item);
-		pointer->data = item;
-		printf(" Mau simpan di lokasi mana : ");
-		scanf("%d", &loc);
-		temp = head;
-		for(i = 0; i < loc; i++)
+	else{
+		printf("cetak data....");
+		while(ptr!=NULL)
 		{
-			temp = temp->next;
-			if(temp = NULL)
-			{
-				printf("\n Data tidak dapat tersimpan");
-				return;
-			}
-		}
-		pointer->next = temp->next;
-		temp->next = pointer;
-		printf("\n NODE berhasil disimpan");
-	}
-}
-
-void look_dad()
-{
-	//untuk melihat isi dari linked-list
-	struct node *pointer;
-	pointer = head;
-	if(pointer == NULL)
-	{
-		printf(" Tidak ada data! \n");
-	}
-	else
-	{
-		printf(" Cetak data...\n");
-		while(pointer != NULL)
-		{
-			printf(" %d\n", pointer->data);
-			pointer = pointer->next;
+			printf("%d", ptr->data);
+			ptr = ptr->next;
 		}
 	}
 }
 
-int main()
-{
-	int choice = 0;
-	while(choice != 5) //5 itu untuk exiplicit
+int main (){
+	int pilihan = 0;
+	while(pilihan != 5) //5 itu untuk explicit
 	{
-		printf("\n *****Menu Latihan Linked List*****\n");
-		printf(" ==================================\n");
-		printf("\n 1. Input data di NODE awal\n 2. Input data di NODE akhir\n 3. Insert data di NODE sembarang\n 4. Lihat data dalam linked list\n 5. Keluar!\n");
-		printf("\n Pilihanmu? "); scanf("%d", &choice);
-		switch(choice)
+		printf("==========================================\n");
+		printf(" ******* Menu Latihan Linked List *******\n");
+		printf("==========================================\n");
+		printf("\n1. Input data di NODE awal \n");
+		printf("2. Input data di Node akhir\n");
+		printf("3. Input data di NODE sembarang\n");
+		printf("4. Lihat data dalam Linked List\n");
+		printf("5. Keluar");
+		printf("\n"); scanf("%d", &pilihan);
+		
+		switch(pilihan)
 		{
 			case 1:
-				brain();
-			break;
+				awal();
+				break;
+				
 			case 2:
-				bott();
-			break;
+				akhir();
+				break;
+			
 			case 3:
-				mid();
-			break;
+				sembarang();
+				break;
+				
 			case 4:
-				look_dad();
-			break;
+				lihat();
+				printf("\n");
+				break;
+				
 			case 5:
 				exit(0);
-			break;
+				break;
+				
 			default:
-				printf("Masukno Pilihanmu...");
-		};
+			printf("masukan pilihan");
+				
+		}
 	}
 }

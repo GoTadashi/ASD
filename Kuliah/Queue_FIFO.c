@@ -48,7 +48,7 @@ int enqueue(int data)
 				}
 			}
 			else
-				printf("\n isi antrian kosong");
+				printf("\n isi antrian kosong\n");
 		}
 	}
 	else if(penuh()==0)
@@ -83,7 +83,7 @@ void Tampil()
         printf("\n");
     }
     else
-        printf("Tidak ada data dalam antrian!");
+        printf("Tidak ada data dalam antrian!\n");
 }
 
 int hapus()

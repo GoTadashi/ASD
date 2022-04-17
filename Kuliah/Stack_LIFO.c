@@ -43,7 +43,7 @@ void push(char d[5])
 
 void pop()
 {
-	printf ("Daata yang diambil = %s\n", tumpuk.data[tumpuk.top]);
+	printf ("Data yang diambil = %s\n\n", tumpuk.data[tumpuk.top]);
 	tumpuk.top--;
 }
 
@@ -53,8 +53,8 @@ void printstack()
 	for (i=tumpuk.top;i>=0;i--)
 	{
 		printf ("Data : %s\n", tumpuk.data[i]);
-		printf ("\n");
 	}
+	printf ("\n");
 }
 
 void clean()
@@ -94,19 +94,17 @@ int main()
 			case 2: if (isempty() != 1)
 						pop();
 					else 
-						printf ("Stack masih kosong!\n");
-						printf ("\n");
+						printf ("Stack masih kosong!\n\n");
 			break;
 			
 			case 3: if (isempty() != 1)
 						printstack();
 					else
-						printf ("No Data!\n");
+						printf ("No Data!\n\n");
 			break;
 			
 			case 4: clean();
-					printf ("Data telah dihapus!\n");
-					printf ("\n");
+					printf ("Data telah dihapus!\n\n");
 			break;
 		}	
 		getch;

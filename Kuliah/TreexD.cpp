@@ -2,19 +2,19 @@
 #include <conio.h>
 #include <stdlib.h>
 
-struct Node
+struct node
 {
 	int data;
-	Node *kiri;
-	Node *kanan;
+	node *kiri;
+	node *kanan;
 };
 
-void tambah(Node **root, int dataku)
+void tambah(node **root, int dataku)
 {
     if((*root) == NULL)
     {
     	node *baru;
-        baru = new Node;
+        baru = new node;
         baru->data = dataku;
         baru->kiri = NULL;
         baru->kanan = NULL;
@@ -34,7 +34,7 @@ void tambah(Node **root, int dataku)
         printf("Data sudah ada!");
 }
 
-void preOrder(Node *root)
+void preOrder(node *root)
 {
     if(root != NULL)
 	{
@@ -44,7 +44,7 @@ void preOrder(Node *root)
 	}
 }
 
-void inOrder(Node *root)
+void inOrder(node *root)
 {
     if(root != NULL)
 	{
@@ -54,7 +54,7 @@ void inOrder(Node *root)
     }
 }
 
-void postOrder(Node *root)
+void postOrder(node *root)
 {
     if(root != NULL)
 	{
@@ -64,12 +64,30 @@ void postOrder(Node *root)
     }
 }
 
+void hapusdata(node **root, int dataku)
+{
+	if((*root) != NULL)
+    {
+    	node *baru;
+        baru = new node;
+        baru->data = dataku;
+        baru->kiri = NULL;
+        baru->kanan = NULL;
+        (*root) = baru;
+        (*root)->kiri = NULL;
+        (*root)->kanan = NULL;
+        printf("Data berhasil dibersihkan!\n");
+    }
+    else
+        printf("Data masih kosong!\n");
+}
+
 int main()
 {
     int pil, data;
-    Node *tree; 
-    tree = NULL; 
-  
+    node *tree;
+    tree = NULL;
+
 	do
 	{
         system("cls"); //bersihkan layar
@@ -78,10 +96,11 @@ int main()
         printf("\nMENU");
         printf("\n----\n");
         printf("1. Input Data\n");
-        printf("2. Lihat pre-order\n");
-        printf("3. Lihat in-order\n");
-        printf("4. Lihat post-order\n");
-        printf("5. Keluar\n");
+        printf("2. Lihat Pre-order\n");
+        printf("3. Lihat In-order\n");
+        printf("4. Lihat Post-order\n");
+        printf("5. Hapus Data\n");
+        printf("6. Keluar\n");
         printf("Pilihan kamu? = ");
         scanf("%d", &pil);
         switch(pil)
@@ -120,7 +139,10 @@ int main()
                 else
                     printf("Masih kosong!");
                 break;
-            }    
+            case 5:
+            	hapusdata(&tree, data);
+            	break;
+            }
             getch();
       }
       while(pil!=5);
