@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include <conio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <conio.h>
 
 struct node
 {
@@ -63,7 +64,7 @@ void postOrder(node *root)
         printf("%d ", root->data);
     }
 }
-
+/*
 void hapusdata(node **root, int dataku)
 {
 	if((*root) != NULL)
@@ -81,7 +82,49 @@ void hapusdata(node **root, int dataku)
     else
         printf("Data masih kosong!\n");
 }
-
+*/
+void hapusdata(struct node **root, int data)
+{
+    if (*root == NULL)
+        return;
+    if (strcmp((*root)->data, data) < 0)
+        hapusdata(&(*root)->kiri, data);
+    else if (strcmp((*root)->dataku, data) > 0)
+        hapusdata(&(*root)->kanan, data);
+    else
+    {
+        if ((*root)->kiri == NULL && (*root)->kanan == NULL)
+        {
+            free((*root)->data);
+            free(*root);
+            *root = NULL;
+        }
+        else if ((*root)->kiri == NULL)
+        {
+            struct node *temp = *root;
+            *root = (*root)->kanan;
+            free(temp->data);
+            free(temp);
+        }
+        else if ((*root)->kanan == NULL)
+        {
+            struct node *temp = *root;
+            *root = (*root)->kiri;
+            free(temp->data);
+            free(temp);
+        }
+        else
+        {
+            struct node *temp = (*root)->kanan;
+            while (temp->kiri != NULL)
+                temp = temp->kiri;
+            char *temp_word = (*root)->data;
+            (*root)->data = temp->data;
+            temp->data = temp_word;
+            hapusdata(&(*root)->kanan, temp_word);
+        }
+    }
+}
 int main()
 {
     int pil, data;
@@ -142,8 +185,8 @@ int main()
             case 5:
             	hapusdata(&tree, data);
             	break;
-            }
+        }
             getch();
-      }
-      while(pil!=5);
+	}
+    while(pil!=5);
 }
